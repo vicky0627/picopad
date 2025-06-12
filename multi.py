@@ -20,6 +20,9 @@ BTN3_PIN = board.GP7
 BTN4_PIN = board.GP19
 BTN5_PIN = board.GP20
 BTN6_PIN = board.GP21
+BTN7_PIN = board.GP22
+BTN8_PIN = board.GP26
+BTN9_PIN = board.GP27
 
 # Variables
 clk_last = None
@@ -43,7 +46,7 @@ sw.direction = digitalio.Direction.INPUT
 sw.pull = digitalio.Pull.UP
 
 # Buttons Pins
-btn_pins = [BTN1_PIN, BTN2_PIN, BTN3_PIN, BTN4_PIN, BTN5_PIN, BTN6_PIN]
+btn_pins = [BTN1_PIN, BTN2_PIN, BTN3_PIN, BTN4_PIN, BTN5_PIN, BTN6_PIN, BTN7_PIN, BTN8_PIN, BTN9_PIN]
 buttons = []
 for pin in btn_pins:
     button = digitalio.DigitalInOut(pin)
@@ -115,6 +118,12 @@ def handle_button_actions():
                 keyboard.send(Keycode.WINDOWS, Keycode.PRINT_SCREEN)
             elif i == 5:  # Button 6: Open Settings (Win + I)
                 keyboard.send(Keycode.WINDOWS, Keycode.I)
+            elif i == 6:  # Button 7: Copy (Ctrl + C)
+                keyboard.send(Keycode.CONTROL, Keycode.C)
+            elif i == 7:  # Button 8: Paste (Ctrl + V)
+                keyboard.send(Keycode.CONTROL, Keycode.V)
+            elif i == 8:  # Button 9: Cut (Ctrl + X)
+                keyboard.send(Keycode.CONTROL, Keycode.X)
             time.sleep(0.2)  # Debounce delay
 
 # Main Loop
